@@ -1,6 +1,7 @@
 package org.ram.model;
 
 import java.time.LocalDate;
+import java.util.List;
 
 
 public class Todo {
@@ -15,7 +16,7 @@ public class Todo {
 
 	private LocalDate target_date;
 
-
+	 private List<Tag> tags;
 	private String done;
 
 	public Todo() {
@@ -54,6 +55,14 @@ public class Todo {
 		this.target_date = target_date;
 	}
 
+	public List<Tag> getTags() {
+		return tags;
+	}
+
+	public void setTags(List<Tag> tags) {
+		this.tags = tags;
+	}
+
 	public String getDone() {
 		return done;
 	}
@@ -62,19 +71,15 @@ public class Todo {
 		this.done = done;
 	}
 
-	@Override
-	public String toString() {
-		return "Todo [id=" + id + ", username=" + username + ", description=" + description + ", target_date="
-				+ target_date + ", done=" + done + "]";
-	}
-
-	public Todo(Integer id, String username, String description, LocalDate target_date, String done) {
+	public Todo(Integer id, String username, String description, LocalDate target_date, List<Tag> tags, String done) {
 		super();
 		this.id = id;
 		this.username = username;
 		this.description = description;
 		this.target_date = target_date;
+		this.tags = tags;
 		this.done = done;
 	}
+
 
 }

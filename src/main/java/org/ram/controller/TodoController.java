@@ -2,6 +2,7 @@ package org.ram.controller;
 
 import java.util.List;
 
+import org.ram.model.Tag;
 import org.ram.model.Todo;
 
 import org.ram.service.TodoService;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -32,6 +34,11 @@ public class TodoController {
 	        return todoService.getAllTodos();
 	    }
 
+		@GetMapping("/getAllTags")
+	    public List<Tag> getAllTags() {
+	        return todoService.getAllTags();
+	    }
+		
 		@PostMapping("/createTodo")
 	    public void createTodo(@RequestBody Todo todo) {
 	        todoService.createTodo(todo);
@@ -46,5 +53,17 @@ public class TodoController {
 	    public void deleteTodoById(@PathVariable int id) {
 	        todoService.deleteTodoById(id);
 	    }
+	    
+	    @PostMapping("/createTag")
+	    public void createTag(@RequestBody Tag tag) {
+	        todoService.createTag(tag);
+	    }
+	    
+	    @PostMapping("/map")
+	    public void mapTagToTodo(@RequestParam("todoId") int todoId, @RequestParam("tagId") int tagId) {
+	        todoService.mapTagToTodo(todoId, tagId);
+	    }
+	    
+	
 
 }
